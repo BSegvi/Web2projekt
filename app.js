@@ -8,7 +8,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "html");
 app.set("partials", path.join(__dirname, "partials"));
 const { auth } = require("express-openid-connect");
-
+const externalUrl = process.env.RENDER_EXTERNAL_URL;
 const config = {
   authRequired: false,
   auth0Logout: true,
