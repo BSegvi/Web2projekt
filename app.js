@@ -12,9 +12,8 @@ const { auth } = require("express-openid-connect");
 const config = {
   authRequired: false,
   auth0Logout: true,
-  secret:
-    "a long, randomac9676181de97f762aa8ef3a26cbfcc771de2bf65265cf403f4346875e4aa267ly-generated string stored in env",
-  baseURL: "http://localhost:3000",
+  secret: "ac9676181de97f762aa8ef3a26cbfcc771de2bf65265cf403f4346875e4aa267ly",
+  baseURL: externalUrl || "http://localhost:3000",
   clientID: "YiHLZgcqVenvLVXiZSgwdnPi7vgau02x",
   issuerBaseURL: "https://dev-b5iqijw0brv5hnr1.us.auth0.com",
 };
@@ -157,6 +156,7 @@ app.post("/result/:id", urlencodedParser, (req, res) => {
 });
 
 const { requiresAuth } = require("express-openid-connect");
+const { hostname } = require("os");
 
 app.get("/profile", requiresAuth(), (req, res) => {
   //res.send(JSON.stringify(req.oidc.user.nickname));
@@ -164,7 +164,16 @@ app.get("/profile", requiresAuth(), (req, res) => {
   res.send(user);
 });
 
+const externalUrl = process.env.RENDER_EXTERNAL_URL;
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+if (externalUrl) {
+  app.listen(port, hostname, () => {
+    console.log(
+      `Server locally running at http://${hostname}:${port}/ and from outside on &{externalUrl}`
+    );
+  });
+} else {
+  app.listen(port, () => {
+    console.log(`Server running at https://localhost:${port}`);
+  });
+}
