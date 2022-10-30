@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Comments</h1>
+    <div>
+        <% for(let i=0; i<comments.length; i++) { %>
+            <div>
+    <p><%=comments[i].userMail%>
+                <%=comments[i].date%></p>
+               <div>
+                <%=comments[i].text%>
+               </div> 
+                <br>
+                
+            </div>
+              
+              
+          
+            <%}%>
+    </div>
+</body>
+</html>
