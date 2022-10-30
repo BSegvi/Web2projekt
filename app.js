@@ -152,12 +152,7 @@ app.post("/result/:id", urlencodedParser, (req, res) => {
     res.redirect("/");
   }
 });
-app.post("/delete", (req, res) => {
-  console.log(req);
-  currentUser = JSON.stringify(req.oidc.user.nickname);
-  if (currentUser === '"admin"') {
-  }
-});
+
 const { requiresAuth } = require("express-openid-connect");
 const { hostname } = require("os");
 

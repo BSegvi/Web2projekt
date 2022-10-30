@@ -11,8 +11,8 @@
     <hr>
     <div>
         <% for(let i=0; i<comments.length; i++) { %>
-            <form action="/delete" method="post" id="deleteForm">
-              <button type="submit"  from="deleteForm" value="Delete">Delete comment</button>  
+            
+              <button value="Delete">Delete comment</button>  
             
             <div>
     <p><%=comments[i].userMail%>
@@ -25,7 +25,7 @@
                 
             </div>
               
-              </form>
+              
           
             <%}%>
     </div>
