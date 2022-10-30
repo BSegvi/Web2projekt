@@ -164,7 +164,7 @@ app.get("/profile", requiresAuth(), (req, res) => {
   res.send(user);
 });
 
-const externalUrl = process.env.RENDER_EXTERNAL_URL;
+//const externalUrl = process.env.RENDER_EXTERNAL_URL;
 const port = process.env.PORT || 3000;
 if (externalUrl) {
   app.listen(port, hostname, () => {
